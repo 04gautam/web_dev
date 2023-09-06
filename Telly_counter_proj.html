@@ -133,7 +133,7 @@
 
     <script>
         let counter = 0;
-        let cross = "you crossed 10:";
+        let cross = "you crossed:";
         let notcross = "Every thing is 0";
 
         document.getElementById("add").onclick = function() {
@@ -144,8 +144,8 @@
 
             if (counter === 0) {
                 document.getElementById("said").innerHTML = "Every thing is 0";
-            } else if (counter > 10) {
-                document.getElementById("said").innerHTML = cross;
+            } else if (counter %2 === 0 && counter %5 === 0) {
+                document.getElementById("said").innerHTML = cross+counter;
             } else if (counter < 0) {
                 document.getElementById("said").innerHTML = "Number is negative:";
 
