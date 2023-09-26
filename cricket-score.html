@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <link rel="stylesheet" href="/My-CSS/cricket-score.css">
+    <style>
+      body{
+    display: flex;
+    justify-content: center;
+    font-family: Arial, helvetica;
+}
+.containter-forAll{
+
+    width: 300px;
+    box-shadow: 0px 0px 10px 5px rgb(99, 99, 99);
+    border-radius: 10px;
+}
+.scoreContainer{   
+    border-radius: 10px 10px 0px 0px;
+    margin-bottom: 0px;
+    padding:0px 10px 10px 10px ;
+    background-color: #ffe2e7;
+}
+.container{
+    display: grid;
+    grid-template-columns: 50px 50px 50px;
+    column-gap: 40px;
+    row-gap: 20px;
+    padding: 20px;
+    justify-content: center;
+}
+.realScore{
+    font-weight: bold;
+    font-size: 25px;
+    text-align: center;
+    background-color: blue;
+    color: white;
+    border-radius: 10px;
+    margin-top: 0px;
+}
+
+button{
+    background-color: green;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border:none;
+    border-radius: 5px;
+    box-shadow: 0px 10px 10px 1px rgb(87, 86, 86);
+}
+button:active{
+    background-color:rgb(23, 250, 23) ;
+}
+p{
+    font-size: large;
+    padding: 5px;
+    
+    box-shadow: 0px 0px 5px 1px rgb(138, 137, 137);
+}
+
+#out, #extra{
+    background-color: red;
+}
+#out:active, #extra:active{
+    background-color: rgb(248, 63, 63);
+
+}
+.logo{
+  
+    background-color: black;
+    width: 50px;
+    padding: 2px 10px;
+    color: white;
+    font-size: 11px;
+    margin-top: 0px;
+    margin-left: 100px;
+    font-family: cursive;
+    text-align: center;
+    border-radius: 0px 0px 5px 5px;
+    
+}
+    </style>
+</head>
+<body>
+ 
+
+<div class="containter-forAll">
+    
+<div class="scoreContainer">
+<p class="logo">STARK-4</p>
+    <p id="realScore" class="realScore">Score like real</p>
+   
+    <p id="runCount" class="runCount">Score will be here</p>
+
+    <p id="wickets" class="wickets">Wickets:</p>
+
+    <p id="over" class="over">Over</p>
+
+    <p id="extraRuns" class="extraRuns">Extra runs</p>
+
+</div>
+
+    <div class="container">
+        <button id="0">0Run</button>
+        <button id="1">1Run</button>
+        <button id="2">2Run</button>
+        <button id="3">3Run</button>
+        <button id="4">4Run</button>
+        <button id="6">6Run</button>
+
+        <button id="out">Out</button>
+        <button id="extra">Extra</button>
+       
+    </div>
+</div>
+
+<script>
+let runCount = 0;
+let wickets = 0;
+let ball = 0;
+let over = 0;
+let extra = 0;
+
+
+function countRun(){
+    document.querySelector("#runCount").innerHTML = `Runs: ${runCount}`;
+
+    let el = document.getElementById("realScore");
+        el.innerHTML = `${runCount} -  ${wickets } (${over} . ${ball})`;
+
+
+}
+document.getElementById("1").onclick = function(){
+    runCount+=1;
+    ball+=1;  
+    overBall();
+    countRun();
+    //document.querySelector("p").innerHTML = runCount;
+    show();
+}
+
+document.getElementById("2").onclick = function(){
+    runCount+=2;
+    ball+=1;  
+    overBall();
+    countRun();
+    show();
+}
+
+document.getElementById("3").onclick = function(){
+    runCount+=3;
+    ball+=1;  
+    overBall();
+    countRun();
+    show();
+
+}
+
+document.getElementById("4").onclick = function(){
+    runCount+=4;
+    ball+=1;  
+    overBall();
+    countRun();
+    show();
+
+}
+
+document.getElementById("6").onclick = function(){
+    runCount+=6;
+    ball+=1;  
+    overBall();
+    countRun();
+    show();
+
+}
+
+document.getElementById("0").onclick = function(){
+    runCount+=0;
+    ball+=1;  
+    overBall();
+    countRun();
+    show();
+
+}
+
+document.getElementById("extra").onclick = function(){
+    runCount+=1;
+    ball+=0;
+    overBall();
+    countRun();
+    extra+=1;
+    document.getElementById("extraRuns").innerHTML = `Extra runs ${extra}`
+    show();
+
+}
+
+
+document.getElementById("out").onclick = function(){
+    wickets+=1;
+
+    if(wickets <= 10){
+        ball+=1;
+        overBall();
+        document.querySelector("#wickets").innerHTML = `Wickets: ${wickets}`
+
+        let el = document.getElementById("realScore");
+        el.innerHTML = `${runCount} -  ${wickets } (${over} . ${ball})`;
+
+        show()
+           
+    }
+
+    else{
+        document.querySelector("#wickets").innerHTML = "all players are out";
+    }
+}
+
+
+function show(){
+    document.getElementById("over").innerHTML = `Overs: ${over} Ball: ${ball}`;
+}
+
+function overBall(){  
+    if(ball > 5){
+        over+=1;
+        ball = 0;
+    }
+    //console.log("Overs "+over ," Ball "+ball);
+}
+ </script>
+   <!-- <script src="/My-Java-script/cricket-score.js"></script> -->
+</body>
+</html>
