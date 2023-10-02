@@ -2,36 +2,43 @@
 <html lang="en">
 <head>
     <title>Document</title>
-    <link rel="stylesheet" href="/My-CSS/cricket-score.css">
+   <!--   <link rel="stylesheet" href="/My-CSS/cricket-beta.css">
+-->
     <style>
-      body{
+  /*      body{
     display: flex;
     justify-content: center;
     font-family: Arial, helvetica;
 }
 .containter-forAll{
 
-    width: 300px;
+    width: 320px;
     box-shadow: 0px 0px 10px 5px rgb(99, 99, 99);
     border-radius: 10px;
 }
+
 .scoreContainer{   
     border-radius: 10px 10px 0px 0px;
     margin-bottom: 0px;
     padding:0px 10px 10px 10px ;
-    background-color: #ffe2e7;
+    background-color: #fff0f2;
+}*/
+
+body{
+    padding: 20px;
 }
 .container{
     display: grid;
-    grid-template-columns: 50px 50px 50px;
+    grid-template-columns:repeat(3, 80px) ;
     column-gap: 40px;
     row-gap: 20px;
     padding: 20px;
     justify-content: center;
+
 }
 .realScore{
     font-weight: bold;
-    font-size: 25px;
+    font-size: 30px;
     text-align: center;
     background-color: blue;
     color: white;
@@ -42,27 +49,34 @@
 button{
     background-color: green;
     color: white;
-    padding: 10px;
+    padding: 10px 0px 10px 0px;
     text-align: center;
     border:none;
     border-radius: 5px;
     box-shadow: 0px 10px 10px 1px rgb(87, 86, 86);
+    cursor: pointer;
+    border: 1px solid rgb(88, 88, 88);
 }
 button:active{
     background-color:rgb(23, 250, 23) ;
+    scale: 0.9;
+    transition:0.2s;
 }
 p{
     font-size: large;
     padding: 5px;
-    
+    background-color: rgb(240, 240, 240);
     box-shadow: 0px 0px 5px 1px rgb(138, 137, 137);
+    border-radius: 10px;
+    padding-left: 20px;
 }
 
 #out, #extra{
-    background-color: red;
+    background-color: rgb(197, 0, 0);
 }
 #out:active, #extra:active{
-    background-color: rgb(248, 63, 63);
+    background-color: rgb(252, 19, 19);
+
 
 }
 .logo{
@@ -73,12 +87,24 @@ p{
     color: white;
     font-size: 11px;
     margin-top: 0px;
-    margin-left: 100px;
+    margin-left: 110px;
     font-family: cursive;
     text-align: center;
     border-radius: 0px 0px 5px 5px;
     
 }
+
+
+.dark{
+    background-color: rgb(123, 12, 228);
+    
+}
+.darkMode{
+    background-color: rgb(61, 61, 61);
+   
+    
+}
+
     </style>
 </head>
 <body>
@@ -96,7 +122,7 @@ p{
 
     <p id="over" class="over">Over</p>
 
-    <p id="extraRuns" class="extraRuns">Extra runs</p>
+    <p id="extraRuns" class="extraRuns">Extra runs:</p>
 
 </div>
 
@@ -107,14 +133,16 @@ p{
         <button id="3">3Run</button>
         <button id="4">4Run</button>
         <button id="6">6Run</button>
-
         <button id="out">Out</button>
         <button id="extra">Extra</button>
+        <button onclick="dark()" class="dark">Dark mode</button>
        
     </div>
 </div>
 
-<script>
+
+    <script>
+        
 let runCount = 0;
 let wickets = 0;
 let ball = 0;
@@ -122,6 +150,24 @@ let over = 0;
 let extra = 0;
 
 
+function dark(){
+    let el = document.querySelector("body",);
+    let ell = document.querySelector(".scoreContainer")
+    ell.classList.toggle("darkMode");
+    el.classList.toggle("darkMode");
+}
+
+function show(){
+    document.getElementById("over").innerHTML = `Overs: ${over} Ball: ${ball}`;
+}
+
+function overBall(){  
+    if(ball > 5){
+        over+=1;
+        ball = 0;
+
+    }
+}
 function countRun(){
     document.querySelector("#runCount").innerHTML = `Runs: ${runCount}`;
 
@@ -130,69 +176,7 @@ function countRun(){
 
 
 }
-document.getElementById("1").onclick = function(){
-    runCount+=1;
-    ball+=1;  
-    overBall();
-    countRun();
-    //document.querySelector("p").innerHTML = runCount;
-    show();
-}
 
-document.getElementById("2").onclick = function(){
-    runCount+=2;
-    ball+=1;  
-    overBall();
-    countRun();
-    show();
-}
-
-document.getElementById("3").onclick = function(){
-    runCount+=3;
-    ball+=1;  
-    overBall();
-    countRun();
-    show();
-
-}
-
-document.getElementById("4").onclick = function(){
-    runCount+=4;
-    ball+=1;  
-    overBall();
-    countRun();
-    show();
-
-}
-
-document.getElementById("6").onclick = function(){
-    runCount+=6;
-    ball+=1;  
-    overBall();
-    countRun();
-    show();
-
-}
-
-document.getElementById("0").onclick = function(){
-    runCount+=0;
-    ball+=1;  
-    overBall();
-    countRun();
-    show();
-
-}
-
-document.getElementById("extra").onclick = function(){
-    runCount+=1;
-    ball+=0;
-    overBall();
-    countRun();
-    extra+=1;
-    document.getElementById("extraRuns").innerHTML = `Extra runs ${extra}`
-    show();
-
-}
 
 
 document.getElementById("out").onclick = function(){
@@ -212,22 +196,122 @@ document.getElementById("out").onclick = function(){
 
     else{
         document.querySelector("#wickets").innerHTML = "all players are out";
+
+
     }
 }
 
 
-function show(){
-    document.getElementById("over").innerHTML = `Overs: ${over} Ball: ${ball}`;
+document.getElementById("extra").onclick = function(){
+
+    if(wickets <= 10){ 
+    runCount+=1;
+    ball+=0;
+    overBall();
+    countRun();
+    extra+=1;
+    document.getElementById("extraRuns").innerHTML = `Extra runs: ${extra}`
+    show();
+ }
+ else{
+    document.querySelector("#wickets").innerHTML = "Sorry! all players are out";
+
+ }
 }
 
-function overBall(){  
-    if(ball > 5){
-        over+=1;
-        ball = 0;
+document.getElementById("6").onclick = function(){
+    if(wickets <= 10){
+        runCount+=6;
+        ball+=1;  
+        overBall();
+        countRun();
+        show();
     }
-    //console.log("Overs "+over ," Ball "+ball);
+    else{
+        document.querySelector("#wickets").innerHTML = "Sorry! all players are out";
+
+    }
+
 }
- </script>
-   <!-- <script src="/My-Java-script/cricket-score.js"></script> -->
+
+document.getElementById("4").onclick = function(){
+    if(wickets <= 10){
+        runCount+=4;
+        ball+=1;  
+        overBall();
+        countRun();
+        show();
+    }
+    else{
+        document.querySelector("#wickets").innerHTML = "Sorry! all players are out";
+
+    }
+}
+
+document.getElementById("3").onclick = function(){
+    if(wickets <= 10){
+        runCount+=3;
+        ball+=1;  
+        overBall();
+        countRun();
+        show();
+    }
+    else{
+        document.querySelector("#wickets").innerHTML = "Sorry! all players are out";
+
+    }
+}
+
+
+document.getElementById("0").onclick = function(){
+    if(wickets <= 10){
+        ball+=1;  
+        runCount+=0;
+        overBall();
+        countRun();
+        show();
+    }
+    else{
+        document.querySelector("#wickets").innerHTML = "Sorry! all players are out";
+
+    }
+}
+
+document.getElementById("2").onclick = function(){
+    
+    if(wickets <= 10){
+        runCount+=2;
+        ball+=1;  
+        overBall();
+        countRun();
+        show();
+    }
+    else{
+        document.querySelector("#wickets").innerHTML = "Sorry! all players are out";
+
+    }
+    
+}
+document.getElementById("1").onclick = function(){
+    if(wickets <= 10){
+        runCount+=1;
+        ball+=1;  
+        overBall();
+        countRun();
+        show();
+    }
+    else{
+        document.querySelector("#wickets").innerHTML = "Sorry! all players are out";
+
+    }
+
+}
+   
+
+
+    </script>
+   <!--
+ <script src="/My-Java-script/cricket-beta.js"></script>
+  -->  
 </body>
 </html>
