@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <link rel="stylesheet" href="/My-CSS/cricket-beta.css">
+</head>
+<body>
+ 
+
+<div class="containter-forAll">
+    
+<div class="scoreContainer">
+<p class="logo">STARK-4</p>
+
+<p id="realScore" class="realScore">STARK & Co.</p>
+<!--The moving line -->
+<!-- <marquee behavior="scrole" direction="left" style="color: hsla(240, 100%, 63%, 0.904);">This app is made by STARK & Co.Thanks</marquee> -->
+
+<div class="parentofTwoChild">
+        <div class="firstChild">
+            <p id="runCount" class="runCount">Score:</p>
+
+            <p id="wickets" class="wickets">Wickets:</p>
+
+            <p id="over" class="over">Over:</p>
+
+            <p id="extraRuns" class="extraRuns">Extra runs:</p>
+
+            <p id="sixFour">Four: Six:</p>
+        </div>
+
+        
+        <div class="secondChild" id="parent">
+          
+        </div>
+     
+   </div>
+    
+</div>
+
+    <div class="buttonContainer">
+        <button id="0">0Run</button>
+        <button id="1">1Run</button>
+        <button id="2">2Run</button>
+        <button id="3">3Run</button>
+        <button id="4">4Run</button>
+        <button id="6">6Run</button>
+        <button id="out">Out</button>
+        <button id="extra">Extra</button>
+        <button onclick="dark()" class="dark">Dark</button>
+            <div class="undoButton">
+                <button onclick="undo()" class="undo">Undo</button>
+                <!-- <button onclick="neg()">Neg:1</button> -->
+            </div>
+    </div>
+<!-- </div> -->
+
+
+    <script src="/My-Java-script/cricket-beta.js"></script>
+</body>
+</html>
