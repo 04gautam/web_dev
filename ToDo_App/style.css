@@ -1,0 +1,77 @@
+/* body{
+  background-color:gray;
+   color: white;
+} */
+
+.parent{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  border: 1px solid black;
+
+}
+#delete{ 
+  font-size: larger;
+  text-align: start;
+  background-Color: green;
+  padding: 10px;
+  border-radius:10px;
+  width: 290px;
+  color: white;
+  /* margin-left: 50px; */
+}
+#myInput{
+  height: 30px;
+  border: 1px solid lightgray;
+  outline: none;
+  border-radius: 10px 0px 0px 10px;
+  padding-left: 10px;
+  font-size: larger;
+  padding-bottom: 3px;
+  padding-top: 2px;
+  transition: 500ms;
+  
+}
+#myInput:hover{
+  box-shadow: 1px 1px 6px gray;
+  
+}
+#myButton{
+  height: 37px;
+  outline: none;
+  border-radius: 0px 10px 10px 0px;
+  /* margin-top: 1px; */
+  border: none;
+  color: white;
+  background-color:green;
+}
+#inButton{
+  
+  display: inline-block;
+  background: red;
+  text-align: center;
+  margin-left: 230px;
+  width:30px ;
+  border-radius:60px; 
+  
+}
+#parent{
+  
+  text-align: center;
+  margin-top:10px;
+  width: 350px;
+  border: 1px solid black;
+  height: 400px;
+  overflow: scroll;
+  margin-left: 5%;
+  
+}
+.inButt{
+  display: flex;
+  /* border: 1px solid black; */
+
+  justify-content: center;
+  
+}
